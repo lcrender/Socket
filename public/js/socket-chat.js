@@ -1,12 +1,13 @@
 const socket = io();
 const params = new URLSearchParams (window.location.search);
-if (!params.has('nombre')) {
+if (!params.has('nombre') || !params.has('sala')) {
     window.location = 'index.html';
-    throw new Error('El nombre es necesario');
+    throw new Error('El nombre y las sala son necesarios para acceder al chat');
 }
 
 let usuario = {
-    nombre: params.get('nombre')
+    nombre: params.get('nombre'),
+    sala: params.get('sala')
 };
 
 socket.on('connect', function() {

@@ -2,10 +2,11 @@ class Usuarios {
     constructor() {
         this.personas = [];
     }
-    addPerson(id, nombre){
+    addPerson(id, nombre, sala){
         let persona = {
             id,
-            nombre
+            nombre,
+            sala
         };
         this.personas.push(persona);
         return this.personas;
@@ -18,7 +19,8 @@ class Usuarios {
         return this.personas;
     }
     getPersonsInRoom (sala) {
-
+        let personsInRoom = this.personas.filter(persona => persona.sala === sala)
+        return personsInRoom
     }
     deletePerson(id) {
         let personaBorrada = this.getPerson(id);
